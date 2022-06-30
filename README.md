@@ -19,7 +19,7 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 
 >- 들여쓰기 = Tab으로 통일
 >- 연산자 앞뒤 1칸 띄어쓰기
->- 변수표기법은 camelCase
+>- 변수표기법은 camelCase, SnakeCase 두종류로 한정함
 
 
 ## 사용법
