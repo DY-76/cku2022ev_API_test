@@ -15,7 +15,7 @@ from urllib.parse import urlencode, quote_plus, unquote
 # Service URL
 xmlUrl = 'http://openapi.kepco.co.kr/service/EvInfoServiceV2/getEvSearchList'
 
-My_API_Key = unquote('Dkpg0lVsQ7kpCYVji4JqDIBTXji%2FIG5Sk2WV%2BApkA%2BoVzW%2BgV493S3WjBB%2B5WLHUvLsf%2Fx6hk83h4KqTUKEpbw%3D%3D')
+My_API_Key = unquote('Zxc%2BL1BY7vTH4mkcjzGShFsue5yUAk2q55yjb3nUf7EeeXcsQTv9nE7qIjVN2oU01PuQMJ%2BiHQGuo2fa2ZlJlw%3D%3D')
 print(My_API_Key)
 
 queryParams = '?' + urlencode(    # get 방식으로 쿼리를 분리하기 위해 '?'를 넣은 것
