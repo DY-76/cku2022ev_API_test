@@ -13,9 +13,10 @@
         queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('JSON'); /*응답 확장자*/
         queryParams += '&' + encodeURIComponent('cond[addr::LIKE]') + '=' + encodeURIComponent('전라남도 나주시 전력로 55'); /*주소*/
         queryParams += '&' + encodeURIComponent('serviceKey') + '=' + serviceKey; /*Service Key*/
-        xhr.open('GET', url + queryParams);
+        xhr.open('GET', url + queryParams); /*Get 방식으로 API 호출*/
         xhr.onreadystatechange = function () {
             if (this.readyState == 4) {
+                /*알림창 제공*/
                 alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
             }
         };
@@ -26,12 +27,18 @@
 </head>
 <body>
 테스트 페이지
-<input type="number" name="page" min="1" max="99"><span class="up">페이지</span>
-<input type="number" name="perPage" min="1" max="99"><span class="up">페이지당 표시 자료 수</span>
-<input type="radio" name="type"><span class="up">응답타입 : XML</span>
-<input type="radio" name="type"><span class="up">응답타입 : JSON</span>
-<input type="text" name="addr"><span class="up">주소</span>
-<button onclick="Request()">API 호출</button>
+<br>
+<br><input type="number" name="page" min="1" max="99"><span class="up">페이지</span>
+<br><input type="number" name="perPage" min="1" max="99"><span class="up">페이지당 표시 자료 수</span>
+
+<br><input type="radio" name="type"><span class="up">응답타입 : XML</span>
+    <input type="radio" name="type"><span class="up">응답타입 : JSON</span>
+
+<br><input type="text" name="addr"><span class="up">주소</span>
+
+<br>
+<br><button onclick="Request()">API 호출</button>
+
 </body>
 <nHeaders></nHeaders>
 <nBody></nBody>
