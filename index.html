@@ -10,7 +10,7 @@
         var queryParams = '?' + encodeURIComponent('page') + '='+ encodeURIComponent('1'); /*Service Key*/
         queryParams += '&' + encodeURIComponent('perPage') + '=' + encodeURIComponent('10'); /**/
         queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('JSON'); /**/
-        queryParams += '&' + encodeURIComponent('addr') + '=' + encodeURIComponent('전라남도 나주시 전력로 55'); /**/
+        queryParams += '&' + encodeURIComponent('cond[addr::LIKE]') + '=' + encodeURIComponent('전라남도 나주시 전력로 55'); /**/
         queryParams += '&' + encodeURIComponent('serviceKey') + '=' + serviceKey; /**/
         xhr.open('GET', url + queryParams);
         xhr.onreadystatechange = function () {
