@@ -26,6 +26,12 @@
 </head>
 <body>
 테스트 페이지
+<input type="number" name="page" min="1" max="99"><span class="up">페이지</span>
+<input type="number" name="perPage" min="1" max="99"><span class="up">페이지당 표시 자료 수</span>
+<input type="radio" name="type"><span class="up">응답타입 : XML</span>
+<input type="radio" name="type"><span class="up">응답타입 : JSON</span>
+<input type="text" name="addr"><span class="up">주소</span>
+<button onclick="Request()">API 호출</button>
 </body>
 <nHeaders></nHeaders>
 <nBody></nBody>
