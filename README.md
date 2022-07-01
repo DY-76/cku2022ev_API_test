@@ -24,6 +24,10 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 
 ## 사용법
 
+`Python` Module/main.py
+
+`Web` https://dy-76.github.io/cku2022ev_API_test/
+
 **업데이트 예정**
 
 
@@ -36,3 +40,5 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 `2022.07.01` API source 변경
 
 `2022.07.01` API 구동 성공, test page index 추가
+
+`2022.07.01` test page 구축 성공
