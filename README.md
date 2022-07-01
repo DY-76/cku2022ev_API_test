@@ -32,3 +32,7 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 `2022.06.30` Git 구축, ReadMe 작성
 
 `2022.06.30` XML Requests 코드 작성 => service key 이슈
+
+`2022.07.01` API source 변경
+
+`2022.07.01` API 구동 성공, test page index 추가
