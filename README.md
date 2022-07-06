@@ -44,3 +44,7 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 `2022.07.01` test page 구축 성공
 
 `2022.07.05` test page input update
+
+`2022.07.06` Kakao Map API 적용
+
+`2022.07.07` Kakao Map API Marker Test code Update 
