@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>cku2022ev</title>
+
+    <!--    Kakao API-->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22cdd82c10efbbd5945b45ce7749553"></script>
+
     <script>
         function Request(){
             var serviceKey = 'Zxc%2BL1BY7vTH4mkcjzGShFsue5yUAk2q55yjb3nUf7EeeXcsQTv9nE7qIjVN2oU01PuQMJ%2BiHQGuo2fa2ZlJlw%3D%3D'
@@ -20,7 +24,7 @@
             queryParams += '&' + encodeURIComponent('serviceKey') + '=' + serviceKey; /*Service Key*/
             xhr.open('GET', url + queryParams); /*Get 방식으로 API 호출*/
             xhr.onreadystatechange = function () {
-                if (this.readyState == 4) {
+                if (this.readyState === 4) {
                     /*알림창 제공*/
                     alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
                 }
@@ -35,15 +39,24 @@
 <br><input type="number" name="page" min="1" max="99" id="page"><span class="up">페이지</span>
 <br><input type="number" name="perPage" min="1" max="99" id="perPage"><span class="up">페이지당 표시 자료 수</span>
 
-<br><input type="radio" name="type"><span class="up">응답타입 : XML</span>
-    <input type="radio" name="type"><span class="up">응답타입 : JSON</span>
+<br><input type="radio" name="type" checked><span class="up">응답타입 : JSON</span>
 
 <br><input type="text" name="addr" id="addr"><span class="up">주소</span>
 
 <br>
 <br><button onclick="Request()">API 호출</button>
 
+<br>
+<div id="map" style="width:100%;height:350px;"></div>
+<script>
+    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+    var options = { //지도를 생성할 때 필요한 기본 옵션
+	    center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	    level: 3 //지도의 레벨(확대, 축소 정도)
+    };
+
+    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+</script>
+
 </body>
-<nHeaders></nHeaders>
-<nBody></nBody>
 </html>
