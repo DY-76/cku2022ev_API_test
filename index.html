@@ -61,6 +61,13 @@
 
     var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
+    // 지도를 클릭했을때 클릭한 위치에 마커를 추가하도록 지도에 클릭이벤트를 등록합니다
+    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+        // 클릭한 위치에 마커를 표시합니다
+        addMarker(mouseEvent.latLng);
+    });
+
+
     // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
     var markers = [];
 
