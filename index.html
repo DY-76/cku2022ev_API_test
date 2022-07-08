@@ -28,9 +28,9 @@
                     /*알림창 제공*/
                     alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
                     console.log(this.response.data)
-                    console.log(this.response.data[0])
-                    console.log(this.response.data[0].addr)
-                    console.log(this.response.data[0].lat)
+                    console.log(JSON.parse(this.responseText).data)
+                    console.log(typeof(this.response))
+                    console.log(JSON.parse(this.responseText).data[0])
                 }
             };
             xhr.send('');
