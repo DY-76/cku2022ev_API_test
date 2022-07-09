@@ -47,8 +47,11 @@
             queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('JSON'); /*응답 확장자*/
             queryParams += '&' + encodeURIComponent('cond[addr::LIKE]') + '=' + encodeURIComponent(addr_value); /*주소*/
             queryParams += '&' + encodeURIComponent('serviceKey') + '=' + serviceKey; /*Service Key*/
+            console.log("체크포인트")
             xhr.open('GET', url + queryParams); /*Get 방식으로 API 호출*/
+            console.log("체크포인트")
             xhr.onreadystatechange = function () {
+                console.log("체크포인트")
                 if (this.readyState === 4) {
                     /*알림창 제공*/
                     alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
