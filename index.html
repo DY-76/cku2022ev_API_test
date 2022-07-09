@@ -12,18 +12,25 @@
         function RequestMarker(Datas){
             sameAddrData = [];
             GroupDatas = [];
+            Names = [];
             sameAddrData.push(Datas[0]);
             for (var i = 1; i < Datas.length; i++){
                 if (Datas[i].addr === Datas[i-1].addr) {
                     sameAddrData.push(Datas[i]);
                 } else {
                     GroupDatas.push(sameAddrData);
+
                     //임시 마커 호출 형식 (차후, 데이터를 리스트 형태로 넘기는 함수 제작 예정)
-                    addMarker(new kakao.maps.LatLng(GroupDatas[GroupDatas.length-1][0].lat, GroupDatas[GroupDatas.length-1][0].longi), GroupDatas[GroupDatas.length-1][0].csNm)
+                    for (var j = 0; j < GroupDatas[GroupDatas.length-1].length; j++){
+                        Names.push(GroupDatas[GroupDatas.length-1][j].csNm)
+                    }
+                    addMarker(new kakao.maps.LatLng(GroupDatas[GroupDatas.length-1][0].lat, GroupDatas[GroupDatas.length-1][0].longi), Names)
+
                     sameAddrData = [];
                     sameAddrData.push(Datas[i]);
                 }
             }
+            // 데이터 디버깅
             console.log(GroupDatas)
         }
         function Request(){
@@ -45,7 +52,6 @@
                 if (this.readyState === 4) {
                     /*알림창 제공*/
                     alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
-                    console.log(JSON.parse(this.responseText).data[0]);
 
                     // API 응답 데이터 처리를 위해 RequestMarker 호출
                     RequestMarker(JSON.parse(this.responseText).data);
@@ -98,10 +104,10 @@
     var infowindows = [];
 
     // 마커 하나를 지도위에 표시합니다, 중복의 경우 여기서 필터링 하여 넣어주어야 합니다
-    addMarker(new kakao.maps.LatLng(33.450701, 126.570667), name = "이름누락");
+    addMarker(new kakao.maps.LatLng(37.7362, 128.8739), name = "이름누락");
 
     // 마커를 생성하고 지도위에 표시하는 함수입니다, 인자로 이름을받아 인포에 사용합니다
-    function addMarker(position, name) {
+    function addMarker(position, ames) {
 
         // 마커를 생성합니다
         var marker = new kakao.maps.Marker({
@@ -115,8 +121,10 @@
         markers.push(marker);
 
         // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-        var iwContent = '<div style="padding:5px;">'+name +'<br></div>';
-
+        for (var i = 0; i < names.length; i++) {
+            name += names[i] + "<br>"
+        }
+        var iwContent = '<div style="padding:5px;">' + name + '</div>';
         // 인포윈도우를 생성합니다
         //인포윈도우 표시 위치입니다
         var infowindow = new kakao.maps.InfoWindow({

@@ -52,3 +52,5 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 `2022.07.08` XML Requests Data Test code Update 
 
 `2022.07.09` Info 표시 code Update 
+
+`2022.07.09` XML Requests Data Marking Update
