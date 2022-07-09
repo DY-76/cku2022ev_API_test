@@ -12,13 +12,12 @@
             sameAddrData = [];
             GroupDatas = [];
             sameAddrData.push(Datas[0]);
-            GroupDatas.push(sameAddrData);
-            sameAddrData = [];
             for (var i = 1; i < Datas.length; i++){
                 if (Datas[i].addr === Datas[i-1].addr) {
                     sameAddrData.push(Datas[i]);
                 } else {
                     GroupDatas.push(sameAddrData);
+                    addMarker(new kakao.maps.LatLng(GroupDatas[-1][0].lat, GroupDatas[-1][0].longi), GroupDatas[-1][0].csNm)
                     sameAddrData = [];
                     sameAddrData.push(Datas[i]);
                 }
@@ -44,7 +43,9 @@
                 if (this.readyState === 4) {
                     /*알림창 제공*/
                     alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
-                    console.log(JSON.parse(this.responseText).data[0])
+                    console.log(JSON.parse(this.responseText).data[0]);
+
+                    // API 응답 데이터 처리를 위해 RequestMarker 호출
                     RequestMarker(JSON.parse(this.responseText).data);
                 }
             };
