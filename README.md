@@ -56,3 +56,5 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 `2022.07.09` XML Requests Data Marking Update
 
 `2022.07.09` Requests Data Marking Bug Fix
+
+`2022.07.10` API speed issue solved
