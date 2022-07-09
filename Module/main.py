@@ -1,7 +1,7 @@
 # 공공데이터포털에서 제공하는 sample code
 import requests, json
 
-url = 'http://api.odcloud.kr/api/EvInfoServiceV2/v1/getEvSearchList'
+url = 'https://api.odcloud.kr/api/EvInfoServiceV2/v1/getEvSearchList'
 
 serviceApiKey = 'Zxc+L1BY7vTH4mkcjzGShFsue5yUAk2q55yjb3nUf7EeeXcsQTv9nE7qIjVN2oU01PuQMJ+iHQGuo2fa2ZlJlw=='
 

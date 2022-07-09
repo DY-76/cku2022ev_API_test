@@ -41,7 +41,7 @@
             var addr_value = document.getElementById('addr').value;
 
             var xhr = new XMLHttpRequest();
-            var url = 'http://api.odcloud.kr/api/EvInfoServiceV2/v1/getEvSearchList'; /*URL*/
+            var url = 'https://api.odcloud.kr/api/EvInfoServiceV2/v1/getEvSearchList'; /*URL*/
             var queryParams = '?' + encodeURIComponent('page') + '='+ encodeURIComponent(page_value); /*페이지*/
             queryParams += '&' + encodeURIComponent('perPage') + '=' + encodeURIComponent(perPage_value); /*페이지당 데이터 수*/
             queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('JSON'); /*응답 확장자*/
