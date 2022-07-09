@@ -104,10 +104,10 @@
     var infowindows = [];
 
     // 마커 하나를 지도위에 표시합니다, 중복의 경우 여기서 필터링 하여 넣어주어야 합니다
-    addMarker(new kakao.maps.LatLng(37.7362, 128.8739), names);
+    addMarker(new kakao.maps.LatLng(37.7362, 128.8739), ["카맵 시작"]);
 
     // 마커를 생성하고 지도위에 표시하는 함수입니다, 인자로 이름을받아 인포에 사용합니다
-    function addMarker(position, ames) {
+    function addMarker(position, names) {
 
         // 마커를 생성합니다
         var marker = new kakao.maps.Marker({
