@@ -17,7 +17,7 @@
                     sameAddrData.push(Datas[i]);
                 } else {
                     GroupDatas.push(sameAddrData);
-                    addMarker(new kakao.maps.LatLng(GroupDatas[-1][0].lat, GroupDatas[-1][0].longi), GroupDatas[-1][0].csNm)
+                    addMarker(new kakao.maps.LatLng(GroupDatas[GroupDatas.length-1][0].lat, GroupDatas[GroupDatas.length-1][0].longi), GroupDatas[GroupDatas.length-1][0].csNm)
                     sameAddrData = [];
                     sameAddrData.push(Datas[i]);
                 }
