@@ -12,7 +12,6 @@
         function RequestMarker(Datas){
             sameAddrData = [];
             GroupDatas = [];
-            Names = [];
             sameAddrData.push(Datas[0]);
             for (var i = 1; i < Datas.length; i++){
                 if (Datas[i].addr === Datas[i-1].addr) {
@@ -21,6 +20,7 @@
                     GroupDatas.push(sameAddrData);
 
                     //임시 마커 호출 형식 (차후, 데이터를 리스트 형태로 넘기는 함수 제작 예정)
+                    Names = [];
                     for (var j = 0; j < GroupDatas[GroupDatas.length-1].length; j++){
                         Names.push(GroupDatas[GroupDatas.length-1][j].csNm)
                     }
@@ -121,9 +121,9 @@
         markers.push(marker);
 
         // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-        name = "";
+        name = '';
         for (var i = 0; i < names.length; i++) {
-            name += names[i] + "<br>"
+            name += names[i] + '<br>'
         }
         var iwContent = '<div style="padding:5px;">' + name + '</div>';
         // 인포윈도우를 생성합니다
