@@ -8,6 +8,23 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22cdd82c10efbbd5945b45ce7749553"></script>
 
     <script>
+        function RequestMarker(Datas){
+            sameAddrData = [];
+            GroupDatas = [];
+            sameAddrData.push(Datas[0]);
+            GroupDatas.push(sameAddrData);
+            sameAddrData = [];
+            for (var i = 1; i < Datas.length; i++){
+                if (Datas[i].addr === Datas[i-1].addr) {
+                    sameAddrData.push(Datas[i]);
+                } else {
+                    GroupDatas.push(sameAddrData);
+                    sameAddrData = [];
+                    sameAddrData.push(Datas[i]);
+                }
+            }
+            console.log(GroupDatas)
+        }
         function Request(){
             var serviceKey = 'Zxc%2BL1BY7vTH4mkcjzGShFsue5yUAk2q55yjb3nUf7EeeXcsQTv9nE7qIjVN2oU01PuQMJ%2BiHQGuo2fa2ZlJlw%3D%3D'
             var page_value = document.getElementById('page').value;
@@ -27,10 +44,8 @@
                 if (this.readyState === 4) {
                     /*알림창 제공*/
                     alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
-                    console.log(this.response.data)
-                    console.log(JSON.parse(this.responseText).data)
-                    console.log(typeof(this.response))
                     console.log(JSON.parse(this.responseText).data[0])
+                    RequestMarker(JSON.parse(this.responseText).data);
                 }
             };
             xhr.send('');
