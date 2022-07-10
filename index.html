@@ -7,15 +7,17 @@
     <!--    Kakao API-->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22cdd82c10efbbd5945b45ce7749553"></script>
 
-    <!--    Keys-->
-    <script type="module" src="./SecretKeys.js">
-        import * as SecretKeys from "./SecretKeys.js"
-    </script>
+    <!--    Keys BackEnd 구현 시 비활성화 할 것-->
+    <script type="text/javascript" src="SecretKeys.js"></script>
+    <!--    Keys BackEnd 구현 시 활성화-->
+<!--    <script type="module" src="./SecretKeys.js">-->
+<!--        import * as SecretKeys from "./SecretKeys.js"-->
+<!--    </script>-->
 
 
     <script>
         function Request(){
-            var serviceKey =SecretKeys.serviceKey();
+            var serviceKey =serviceKey();
             var page_value = document.getElementById('page').value;
             var perPage_value = document.getElementById('perPage').value;
             //var returnType_value = document.getElementById('returnType').value;
@@ -93,7 +95,9 @@
 </script>
 
     <!--    MarkerControl JS : Kakao map 하위에서 import-->
-    <script type="text/javascript" src="Js/MarkerControlFunc.js"></script>
+    <script type="text/javascript" src="Js/markerControlFunc.js"></script>
+    <!--    eventListener JS : Kakao map 하위에서 import-->
+    <script type="text/javascript" src="Js/eventListener.js"></script>
 
 </body>
 </html>
