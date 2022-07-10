@@ -1,104 +1,81 @@
 <!DOCTYPE html>
 <html lang="kr">
-<head>
-    <meta charset="UTF-8">
-    <title>cku2022ev</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>cku2022ev</title>
 
-    <!--    Kakao API-->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22cdd82c10efbbd5945b45ce7749553"></script>
+        <!--    Kakao API-->
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22cdd82c10efbbd5945b45ce7749553"></script>
 
-    <!--    Keys BackEnd 구현 시 비활성화 할 것-->
-<!--    <script type="text/javascript" src="SecretKeys.js"></script>-->
-    <!--    Keys BackEnd 구현 시 활성화-->
-<!--    <script type="module" src="./SecretKeys.js">-->
-<!--        import * as SecretKeys from "./SecretKeys.js"-->
-<!--    </script>-->
+        <script>
+            function Request(){
+                var serviceKey = "Zxc%2BL1BY7vTH4mkcjzGShFsue5yUAk2q55yjb3nUf7EeeXcsQTv9nE7qIjVN2oU01PuQMJ%2BiHQGuo2fa2ZlJlw%3D%3D";
+                var page_value = document.getElementById('page').value;
+                var perPage_value = document.getElementById('perPage').value;
+                //var returnType_value = document.getElementById('returnType').value;
+                var addr_value = document.getElementById('addr').value;
 
+                var xhr = new XMLHttpRequest();
+                var url = 'https://api.odcloud.kr/api/EvInfoServiceV2/v1/getEvSearchList'; /*URL*/
+                var queryParams = '?' + encodeURIComponent('page') + '='+ encodeURIComponent(page_value); /*페이지*/
+                queryParams += '&' + encodeURIComponent('perPage') + '=' + encodeURIComponent(perPage_value); /*페이지당 데이터 수*/
+                queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('JSON'); /*응답 확장자*/
+                queryParams += '&' + encodeURIComponent('cond[addr::LIKE]') + '=' + encodeURIComponent(addr_value); /*주소*/
+                queryParams += '&' + encodeURIComponent('serviceKey') + '=' + serviceKey; /*Service Key*/
+                xhr.open('GET', url + queryParams); /*Get 방식으로 API 호출*/
+                xhr.onreadystatechange = function () {
+                    /*
+                    1. UNSENT (숫자 0) : XMLHttpRequest 객체가 생성됨.
+                    2. OPENED (숫자 1) : open() 메소드가 성공적으로 실행됨.
+                    3. HEADERS_RECEIVED (숫자 2) : 모든 요청에 대한 응답이 도착함.
+                    4. LOADING (숫자 3) : 요청한 데이터를 처리 중임.
+                    5. DONE (숫자 4) : 요청한 데이터의 처리가 완료되어 응답할 준비가 완료됨.
+                    */
+                    if (this.readyState === 4) {
+                        /*알림창 제공*/
+                        alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
+
+                        // API 응답 데이터 처리를 위해 RequestMarker 호출
+                        RequestMarker(JSON.parse(this.responseText).data);
+
+                    } else if (this.readyState === 3){
+                        console.log("데이터 처리중")
+                    } else if (this.readyState === 2){
+                        console.log("응답 확인")
+                    }
+                };
+                xhr.send('');
+            }
+        </script>
+    </head>
+    <body>
+    테스트 페이지
+    <br>
+    <br><input type="number" name="page" min="1" max="99" id="page"><span class="up">페이지</span>
+    <br><input type="number" name="perPage" min="1" max="99" id="perPage"><span class="up">페이지당 표시 자료 수</span>
+    <br><input type="radio" name="type" checked><span class="up">응답타입 : JSON</span>
+    <br><input type="text" name="addr" id="addr"><span class="up">주소</span>
+    <br><br><button onclick="Request()">API 호출</button>
+
+    <br><div id="map" style="width:100%;height:350px;"></div>
+    <p>
+        <button onclick="hideMarkers()">마커 감추기</button>
+        <button onclick="showMarkers()">마커 보이기</button>
+    </p>
 
     <script>
-
-        function Request(){
-            var serviceKey = "Zxc%2BL1BY7vTH4mkcjzGShFsue5yUAk2q55yjb3nUf7EeeXcsQTv9nE7qIjVN2oU01PuQMJ%2BiHQGuo2fa2ZlJlw%3D%3D";
-            var page_value = document.getElementById('page').value;
-            var perPage_value = document.getElementById('perPage').value;
-            //var returnType_value = document.getElementById('returnType').value;
-            var addr_value = document.getElementById('addr').value;
-
-            var xhr = new XMLHttpRequest();
-            var url = 'https://api.odcloud.kr/api/EvInfoServiceV2/v1/getEvSearchList'; /*URL*/
-            var queryParams = '?' + encodeURIComponent('page') + '='+ encodeURIComponent(page_value); /*페이지*/
-            queryParams += '&' + encodeURIComponent('perPage') + '=' + encodeURIComponent(perPage_value); /*페이지당 데이터 수*/
-            queryParams += '&' + encodeURIComponent('returnType') + '=' + encodeURIComponent('JSON'); /*응답 확장자*/
-            queryParams += '&' + encodeURIComponent('cond[addr::LIKE]') + '=' + encodeURIComponent(addr_value); /*주소*/
-            queryParams += '&' + encodeURIComponent('serviceKey') + '=' + serviceKey; /*Service Key*/
-            xhr.open('GET', url + queryParams); /*Get 방식으로 API 호출*/
-            xhr.onreadystatechange = function () {
-                /*
-                1. UNSENT (숫자 0) : XMLHttpRequest 객체가 생성됨.
-                2. OPENED (숫자 1) : open() 메소드가 성공적으로 실행됨.
-                3. HEADERS_RECEIVED (숫자 2) : 모든 요청에 대한 응답이 도착함.
-                4. LOADING (숫자 3) : 요청한 데이터를 처리 중임.
-                5. DONE (숫자 4) : 요청한 데이터의 처리가 완료되어 응답할 준비가 완료됨.
-                */
-                if (this.readyState === 4) {
-                    /*알림창 제공*/
-                    alert('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
-
-                    // API 응답 데이터 처리를 위해 RequestMarker 호출
-                    RequestMarker(JSON.parse(this.responseText).data);
-
-                } else if (this.readyState === 3){
-                    console.log("데이터 처리중")
-                } else if (this.readyState === 2){
-                    console.log("응답 확인")
-                }
-            };
-            xhr.send('');
-        }
+        var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+        var options = { //지도를 생성할 때 필요한 기본 옵션
+            center: new kakao.maps.LatLng(37.7362, 128.8739), //지도의 중심좌표.
+            level: 8 //지도의 레벨(확대, 축소 정도)
+        };
+        var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
     </script>
-</head>
-<body>
-테스트 페이지
-<br>
-<br><input type="number" name="page" min="1" max="99" id="page"><span class="up">페이지</span>
-<br><input type="number" name="perPage" min="1" max="99" id="perPage"><span class="up">페이지당 표시 자료 수</span>
 
-<br><input type="radio" name="type" checked><span class="up">응답타입 : JSON</span>
+        <!--    MarkerControl JS : Kakao map 하위에서 import-->
+        <script type="text/javascript" src="Js/markerControlFunc.js"></script>
+        <!--    eventListener JS : Kakao map 하위에서 import-->
+        <script type="text/javascript" src="Js/eventListener.js"></script>
 
-<br><input type="text" name="addr" id="addr"><span class="up">주소</span>
-
-<br>
-<br><button onclick="Request()">API 호출</button>
-
-<br>
-<div id="map" style="width:100%;height:350px;"></div>
-<p>
-    <button onclick="hideMarkers()">마커 감추기</button>
-    <button onclick="showMarkers()">마커 보이기</button>
-</p>
-
-
-<script>
-    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-    var options = { //지도를 생성할 때 필요한 기본 옵션
-	    center: new kakao.maps.LatLng(37.7362, 128.8739), //지도의 중심좌표.
-	    level: 5 //지도의 레벨(확대, 축소 정도)
-    };
-
-    var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-
-    // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
-    var markers = [];
-
-    // 지도에 표시된 인포 객체를 가지고 있을 배열입니다
-    var infowindows = [];
-
-</script>
-
-    <!--    MarkerControl JS : Kakao map 하위에서 import-->
-    <script type="text/javascript" src="Js/markerControlFunc.js"></script>
-    <!--    eventListener JS : Kakao map 하위에서 import-->
-    <script type="text/javascript" src="Js/eventListener.js"></script>
-
-</body>
+    </body>
 </html>

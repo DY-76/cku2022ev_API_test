@@ -1,3 +1,12 @@
+
+// 전역 변수
+// 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+var markers = [];
+
+// 지도에 표시된 인포 객체를 가지고 있을 배열입니다
+var infowindows = [];
+
+
 // 받은 JSON 데이터를 주소기준 중복을 제거함 - GroupDatas[sameAddrData] 2차원 리스트로 내부 형태 보존
 function RequestMarker(Datas){
     sameAddrData = [];
