@@ -104,10 +104,8 @@ function moveMap(position) {
 
 //리스트에서 클릭했을때, 마커 추가용
 function listClick(index) {
-    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), [GroupDatas[index-1][0].csNm]);
+    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), [GroupDatas[index][0].csNm]);
     popupOn();
-    // map 객체 display 조작 때문에 발생한 깨짐 이슈 때문에 재로딩
-    setTimeout(function(){ map.relayout(); }, 0);
     moveMap(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi));
 }
 

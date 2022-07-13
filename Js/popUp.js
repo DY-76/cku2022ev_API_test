@@ -20,7 +20,7 @@ function addList(Gp_datas, index, name)  {
 
   const a = document.createElement("a");
   a.setAttribute('class',"list_btn");
-  a.setAttribute('onclick',"listClick("+index+")");
+  a.setAttribute('onclick',"listClick("+(index-1)+")");
     // 2-3. a에 text node 추가
   const textNode = document.createTextNode(addValue);
   a.appendChild(textNode);
@@ -29,6 +29,8 @@ function addList(Gp_datas, index, name)  {
 
 function popupOn(){
   document.getElementById("pop_map").style.display = 'block';
+  // map 객체 display 조작 때문에 발생한 깨짐 이슈 때문에 재로딩
+  setTimeout(function(){ map.relayout(); }, 0);
 }
 function popupOff(){
   document.getElementById("pop_map").style.display = 'none';
