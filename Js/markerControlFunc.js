@@ -104,5 +104,6 @@ function listClick(index) {
     };
     map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
     addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), [Names[index]])
+    popupOn()
 }
 

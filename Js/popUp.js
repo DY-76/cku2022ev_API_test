@@ -27,3 +27,7 @@ function addList(Gp_datas, index, name)  {
   a.appendChild(textNode);
   document.getElementById("mk"+index).appendChild(a);
 }
+
+function popupOn(){
+  document.getElementById("pop_map").style.display = 'block';
+}
