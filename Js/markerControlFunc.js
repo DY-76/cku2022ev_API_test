@@ -6,11 +6,13 @@ var markers = [];
 // 지도에 표시된 인포 객체를 가지고 있을 배열입니다
 var infowindows = [];
 
+//모인 데이터
+GroupDatas = [];
 
 // 받은 JSON 데이터를 주소기준 중복을 제거함 - GroupDatas[sameAddrData] 2차원 리스트로 내부 형태 보존
 function RequestMarker(Datas){
+    //주소가 같은 데이터를 모으기 위한 임시변수
     sameAddrData = [];
-    GroupDatas = [];
     sameAddrData.push(Datas[0]);
     for (var i = 1; i < Datas.length; i++){
         if (Datas[i].addr === Datas[i-1].addr) {
@@ -24,7 +26,7 @@ function RequestMarker(Datas){
                 Names.push(GroupDatas[GroupDatas.length-1][j].csNm)
             }
             //리스트 추가
-            addList(GroupDatas[GroupDatas.length-1][0],j,Names[0])
+            addList(GroupDatas[GroupDatas.length-1][0],GroupDatas.length,Names[0])
             //마커추가
             addMarker(new kakao.maps.LatLng(GroupDatas[GroupDatas.length-1][0].lat, GroupDatas[GroupDatas.length-1][0].longi), Names)
 
@@ -89,5 +91,11 @@ function showMarkers() {
 // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
 function hideMarkers() {
     setMarkers(null);
+}
+
+//리스트에서 클릭했을때, 마커 추가용
+function listClick(index) {
+    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), Names)
+
 }
 

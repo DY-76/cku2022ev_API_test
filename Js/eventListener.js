@@ -9,7 +9,9 @@ for(var i = 0; i < target.length; i++){
   target[i].addEventListener('click', function(){
     targetID = this.getAttribute('href');
     console.log(targetID)
-    document.querySelector(targetID).style.display = 'block';
+    if (document.getElementById(targetID)){
+          document.querySelector(targetID).style.display = 'block';
+    }
   });
 }
 
@@ -17,5 +19,17 @@ for(var i = 0; i < target.length; i++){
 for(var j = 0; j < target.length; j++){
   btnPopClose[j].addEventListener('click', function(){
     this.parentNode.parentNode.style.display = 'none';
+  });
+}
+
+//리스트 클릭 (인덱스값을 받아 마크 삽입함)
+// 팝업 열기
+for(var l = 0; l < target.length; l++){
+  target[l].addEventListener('click', function(){
+    targetID = this.getAttribute('href');
+    console.log(targetID)
+        if (document.getElementById(targetID)){
+          listClick(targetID);
+    }
   });
 }

@@ -12,7 +12,7 @@ function addList(Gp_datas, index, name)  {
   const li = document.createElement("li");
 
   // 2-2. li에 id 속성 추가
-  li.setAttribute('id',index);
+  li.setAttribute('href',"#mk"+index);
 
   // 2-3. li에 text node 추가
   const textNode = document.createTextNode(addValue);
