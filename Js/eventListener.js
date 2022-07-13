@@ -8,8 +8,8 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 for(var i = 0; i < target.length; i++){
   target[i].addEventListener('click', function(){
     targetID = this.getAttribute('href');
-    console.log(targetID)
-    if (document.getElementById(targetID)){
+    console.log(targetID.slice(1))
+    if (document.getElementById(targetID.slice(1))){
           document.querySelector(targetID).style.display = 'block';
     }
   });
@@ -27,9 +27,8 @@ for(var j = 0; j < target.length; j++){
 for(var l = 0; l < target.length; l++){
   target[l].addEventListener('click', function(){
     targetID = this.getAttribute('href');
-    console.log(targetID)
-        if (document.getElementById(targetID)){
-          listClick(targetID);
-    }
-  });
+    console.log(targetID);
+    //href값 전처리 후 정수로 형변환하여 전달
+    listClick(Number(targetID.slice(3)));
+  })
 }
