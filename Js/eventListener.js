@@ -28,7 +28,9 @@ for(var l = 0; l < target.length; l++){
   target[l].addEventListener('click', function(){
     targetID = this.getAttribute('href');
     console.log(targetID);
-    //href값 전처리 후 정수로 형변환하여 전달
-    listClick(Number(targetID.slice(3)));
+    if (document.getElementById(targetID.slice(1))){
+      //href값 전처리 후 정수로 형변환하여 전달
+      listClick(Number(targetID.slice(3)));
+    }
   })
 }
