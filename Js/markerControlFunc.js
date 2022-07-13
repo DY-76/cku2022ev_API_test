@@ -104,9 +104,7 @@ function moveMap(position) {
 
 //리스트에서 클릭했을때, 마커 추가용
 function listClick(index) {
-    console.log(Names, index, GroupDatas)
-    console.log([Names[index]])
-    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), [Names[index]])
+    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), [GroupDatas[index][0].csNm])
     popupOn()
     moveMap(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi))
 }
