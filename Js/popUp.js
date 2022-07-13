@@ -21,7 +21,7 @@ function addList(Gp_datas, index, name)  {
   // 3. 생성된 li를 ul에 추가
   document.getElementById('data_list').appendChild(li);
 
-  const a = document.createElement("li");
+  const a = document.createElement("a");
   a.setAttribute('href',"#mk"+index);
   document.getElementById("mk"+index).appendChild(a);
 }
