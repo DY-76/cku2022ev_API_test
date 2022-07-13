@@ -1,4 +1,4 @@
-var target = document.querySelectorAll('.btn_open');
+var target = document.querySelectorAll('.btn_open .list_btn');
 var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
 var targetID;
 
@@ -20,6 +20,7 @@ function addList(Gp_datas, index, name)  {
   document.getElementById('data_list').appendChild(li);
 
   const a = document.createElement("a");
+  a.setAttribute('class',"list_btn");
   a.setAttribute('href',"#pop_map");
   a.setAttribute('onclick',"listClick("+index+")");
     // 2-3. a에 text node 추가
