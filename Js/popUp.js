@@ -9,11 +9,10 @@ function addList(Gp_datas, index, name)  {
 
   // 2. 추가할 li element 생성
   // 2-1. 추가할 li element 생성
-  const li = document.createElement("a");
+  const li = document.createElement("li");
 
   // 2-2. li에 id 속성 추가
-  li.setAttribute('href',"#mk"+index);
-  li.setAttribute('id',"#mk"+index);
+  li.setAttribute('id',"mk"+index);
 
   // 2-3. li에 text node 추가
   const textNode = document.createTextNode(addValue);
@@ -21,4 +20,8 @@ function addList(Gp_datas, index, name)  {
 
   // 3. 생성된 li를 ul에 추가
   document.getElementById('data_list').appendChild(li);
+
+  const a = document.createElement("li");
+  a.setAttribute('href',"#mk"+index);
+  document.getElementById("mk"+index).appendChild(a);
 }
