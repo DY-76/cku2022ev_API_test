@@ -97,6 +97,6 @@ function hideMarkers() {
 function listClick(index) {
     console.log(GroupDatas,index)
     console.log(GroupDatas[0])
-    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), Names)
+    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), Names[index])
 }
 
