@@ -60,3 +60,7 @@ ReadMe page는 원래 잘 작업 안하는데, Project에 인원이 많아 나�
 `2022.07.10` API speed issue solved
 
 `2022.07.10` 코드 정리
+
+`2022.07.12` Popup Update
+
+`2022.07.13` List Update
