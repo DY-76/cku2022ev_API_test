@@ -1,6 +1,5 @@
-var target = document.querySelectorAll('.btn_open .list_btn');
 var btnPopClose = document.querySelectorAll('.pop_wrap .btn_close');
-var targetID;
+
 
 function addList(Gp_datas, index, name)  {
 

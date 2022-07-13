@@ -103,6 +103,6 @@ function listClick(index) {
     level: 8 //지도의 레벨(확대, 축소 정도)
     };
     map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), Names[index])
+    addMarker(new kakao.maps.LatLng(GroupDatas[index][0].lat, GroupDatas[index][0].longi), [Names[index]])
 }
 

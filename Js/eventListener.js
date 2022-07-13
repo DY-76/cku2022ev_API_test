@@ -4,6 +4,9 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     addMarker(mouseEvent.latLng, ["사용자 지정 위치"]);
 });
 
+var target = document.querySelectorAll('.btn_open .list_btn');
+var targetID;
+
 // 팝업 열기
 for(var i = 0; i < target.length; i++){
   target[i].addEventListener('click', function(){
