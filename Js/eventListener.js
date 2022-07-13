@@ -3,3 +3,19 @@
 kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     addMarker(mouseEvent.latLng, ["사용자 지정 위치"]);
 });
+
+// 팝업 열기
+for(var i = 0; i < target.length; i++){
+  target[i].addEventListener('click', function(){
+    targetID = this.getAttribute('href');
+    console.log(targetID)
+    document.querySelector(targetID).style.display = 'block';
+  });
+}
+
+// 팝업 닫기
+for(var j = 0; j < target.length; j++){
+  btnPopClose[j].addEventListener('click', function(){
+    this.parentNode.parentNode.style.display = 'none';
+  });
+}

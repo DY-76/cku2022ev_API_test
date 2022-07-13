@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>cku2022ev</title>
 
+        <!--    Main CSS : 스타일 시트-->
+        <script type="text/css" src="CSS/main.css"></script>
         <!--    Kakao API-->
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e22cdd82c10efbbd5945b45ce7749553"></script>
 
@@ -57,11 +59,22 @@
     <br><input type="text" name="addr" id="addr"><span class="up">주소</span>
     <br><br><button onclick="Request()">API 호출</button>
 
-    <br><div id="map" style="width:100%;height:350px;"></div>
-    <p>
-        <button onclick="hideMarkers()">마커 감추기</button>
-        <button onclick="showMarkers()">마커 보이기</button>
-    </p>
+    <br>
+    <a href="#pop_info_1" class="btn_open">팝업 열기</a>
+
+    <!-- 팝업1 -->
+    <div id="pop_info_1" class="pop_wrap" style="display:none;">
+      <div class="pop_inner">
+        <p class="dsc">팝업 안내문구 입니다.</p>
+          <br><div id="map" style="width:100%;height:350px;"></div>
+          <p>
+              <button onclick="hideMarkers()">마커 감추기</button>
+              <button onclick="showMarkers()">마커 보이기</button>
+          </p>
+        <button type="button" class="btn_close">닫기</button>
+      </div>
+    </div>
+
 
     <script>
         var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -74,6 +87,8 @@
 
         <!--    MarkerControl JS : Kakao map 하위에서 import-->
         <script type="text/javascript" src="Js/markerControlFunc.js"></script>
+        <!--    popUp JS : eventListener 상위에서 import-->
+        <script type="text/javascript" src="Js/popUp.js"></script>
         <!--    eventListener JS : Kakao map 하위에서 import-->
         <script type="text/javascript" src="Js/eventListener.js"></script>
 
