@@ -31,3 +31,6 @@ function addList(Gp_datas, index, name)  {
 function popupOn(){
   document.getElementById("pop_map").style.display = 'block';
 }
+function popupOff(){
+  document.getElementById("pop_map").style.display = 'none';
+}
