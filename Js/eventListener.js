@@ -23,14 +23,14 @@ for(var j = 0; j < target.length; j++){
 }
 
 //리스트 클릭 (인덱스값을 받아 마크 삽입함)
-for(var l = 0; l < target.length; l++){
-  target[l].addEventListener('click', function(){
-    targetID = this.getAttribute('href');
-    console.log(targetID);
-    if (document.getElementById(targetID.slice(1))){
-      console.log(targetID.slice(3),Number(targetID.slice(3)))
-      //href값 전처리 후 정수로 형변환하여 전달
-      listClick(Number(targetID.slice(3)));
-    }
-  })
-}
+// for(var l = 0; l < target.length; l++){
+//   target[l].addEventListener('click', function(){
+//     targetID = this.getAttribute('href');
+//     console.log(targetID);
+//     if (document.getElementById(targetID.slice(1))){
+//       console.log(targetID.slice(3),Number(targetID.slice(3)))
+//       //href값 전처리 후 정수로 형변환하여 전달
+//       listClick(Number(targetID.slice(3)));
+//     }
+//   })
+// }
