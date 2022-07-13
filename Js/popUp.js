@@ -21,6 +21,7 @@ function addList(Gp_datas, index, name)  {
 
   const a = document.createElement("a");
   a.setAttribute('href',"#mk"+index);
+  a.setAttribute('onclick',"listClick(index)");
     // 2-3. a에 text node 추가
   const textNode = document.createTextNode(addValue);
   a.appendChild(textNode);

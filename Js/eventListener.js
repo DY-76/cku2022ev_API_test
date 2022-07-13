@@ -23,7 +23,6 @@ for(var j = 0; j < target.length; j++){
 }
 
 //리스트 클릭 (인덱스값을 받아 마크 삽입함)
-// 팝업 열기
 for(var l = 0; l < target.length; l++){
   target[l].addEventListener('click', function(){
     targetID = this.getAttribute('href');
