@@ -20,7 +20,6 @@ function addList(Gp_datas, index, name)  {
 
   const a = document.createElement("a");
   a.setAttribute('class',"list_btn");
-  a.setAttribute('href',"#pop_map");
   a.setAttribute('onclick',"listClick("+index+")");
     // 2-3. a에 text node 추가
   const textNode = document.createTextNode(addValue);
