@@ -23,6 +23,9 @@ function RequestMarker(Datas){
             for (var j = 0; j < GroupDatas[GroupDatas.length-1].length; j++){
                 Names.push(GroupDatas[GroupDatas.length-1][j].csNm)
             }
+            //리스트 추가
+            addList(GroupDatas[GroupDatas.length-1][0],j,Names[0])
+            //마커추가
             addMarker(new kakao.maps.LatLng(GroupDatas[GroupDatas.length-1][0].lat, GroupDatas[GroupDatas.length-1][0].longi), Names)
 
             sameAddrData = [];

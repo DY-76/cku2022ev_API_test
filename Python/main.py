@@ -21,4 +21,4 @@ while True:
     print(x.hour)
     print(responseJson['data'])
     #print(responseJson['data'][0]['addr'])
-    sleep(60)
+    sleep(3)
